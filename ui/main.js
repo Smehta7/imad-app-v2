@@ -6,6 +6,13 @@ el.innerHTML = 'MODI_FIED';
 
 //move image on click
 var im = document.getElementById('m') ;
+var marginLeft = 0;
+
+function movRight() {
+    marginLeft += 10;
+    im.style.marginLeft = marginLeft + 'px' ;
+}
+
 im.onclick = function() {
-    im.style.marginLeft = '100px' ;
+    var interval = setInterval(movRight, 100);
 };
