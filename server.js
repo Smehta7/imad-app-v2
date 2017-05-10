@@ -5,15 +5,25 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var p1 = {
-  title: 'Page 1 : About Sanket Mehta' ,
-  heading: 'Article One' ,
-  date: '09 May, 2017' ,
-  content: `<p>
+var page = {
+     'page-1': {
+         title: 'Page 1 : About Sanket Mehta' ,
+        heading: 'Article One' ,
+        date: '09 May, 2017' ,
+        content: `<p>
+                This is where the actual content is written. Sanket is an IT student and to be engineer and loves South Indian food :). 
+                His mom also loves Mendu Vada. Born in Ahmedabad, he is studying and staying at Changa, Anand.
+                </p>`
+    },
+     'page-2': {
+        title: 'Page 2 : About Sanket Mehta' ,
+        heading: 'Article Two' ,
+        date: '10 May, 2017' ,
+        content: `<p>
             This is where the actual content is written. Sanket is an IT student and to be engineer and loves South Indian food :). 
             His mom also loves Mendu Vada. Born in Ahmedabad, he is studying and staying at Changa, Anand.
             </p>`
-    
+    }
 };
 
 function createTemplate (data) {
@@ -52,12 +62,11 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/page1', function (req, res) {
-  res.send(createTemplate(p1));
-});
-
-app.get('/page2', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'page2.html'));
+app.get('/:pageName', function (req, res) {
+   // pageName == page-1;
+   // page[pageName] == {} content obj of page1
+  var pageName = req.params.pageName; 
+  res.send(createTemplate(page[pageName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
