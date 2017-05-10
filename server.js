@@ -5,12 +5,55 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var p1 = {
+  title: 'Page 1 : About Sanket Mehta' ,
+  heading: 'Article One' ,
+  date: '09 May, 2017' ,
+  content: `<p>
+            This is where the actual content is written. Sanket is an IT student and to be engineer and loves South Indian food :). 
+            His mom also loves Mendu Vada. Born in Ahmedabad, he is studying and staying at Changa, Anand.
+            </p>`
+    
+};
+
+function createTemplate (data) {
+    var title = data.title , heading = data.heading, date = data.date , content = data. content;
+    
+    var htmlTempl = `
+    <html>
+        <head>
+            <link href="/ui/style.css" rel="stylesheet" />
+            <title>
+                ${title}
+            </title>
+        </head>
+        <body>
+            <div class="con">
+                <div>
+                    <a href="/">Home</a>
+                </div>
+                <hr/>
+                    <h3>
+                        ${heading}
+                    </h3>
+                <div>
+                    ${date}
+                </div>
+                <div>
+                    ${content}
+                </div>
+            </div>
+        </body>    
+    </html>`;
+    return htmlTempl;
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/page1', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'page1.html'));
+  res.send(createTemplate(p1));
 });
 
 app.get('/page2', function (req, res) {
