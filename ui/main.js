@@ -9,7 +9,7 @@ var im = document.getElementById('m') ;
 var marginLeft = 0;
 
 function movRight() {
-    marginLeft += 10;
+    marginLeft += 1;
     im.style.marginLeft = marginLeft + 'px' ;
 }
 
