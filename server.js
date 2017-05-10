@@ -6,7 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 
 var page = {
-     'page2': {
+     'page1': {
          title: 'Page 1 : About Sanket Mehta' ,
         heading: 'Article One' ,
         date: '09 May, 2017' ,
@@ -15,7 +15,7 @@ var page = {
                 His mom also loves Mendu Vada. Born in Ahmedabad, he is studying and staying at Changa, Anand.
                 </p>`
     },
-     'page1': {
+     'page2': {
         title: 'Page 2 : About Sanket Mehta' ,
         heading: 'Article Two' ,
         date: '10 May, 2017' ,
