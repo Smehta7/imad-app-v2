@@ -21,7 +21,7 @@ body {
 }
 
 .con {
-            margin: 90;
+            margin: 0 auto;
             font-family: cursive;
-    
+            background-color: cyan;
 }
