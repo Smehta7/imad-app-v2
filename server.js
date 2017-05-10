@@ -5,7 +5,7 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var page = {
+var pages = {
      'page-one': {
          title: 'Page 1 : About Sanket Mehta' ,
         heading: 'Article One' ,
@@ -66,7 +66,7 @@ app.get('/:pageName', function (req, res) {
    // pageName == page-1;
    // page[pageName] == {} content obj of page1
   var pageName = req.params.pageName; 
-  res.send(createTemplate(page[pageName]));
+  res.send(createTemplate(pages[pageName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
